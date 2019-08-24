@@ -18,7 +18,11 @@ def home():
     mars_data = mongo.db.mars.find_one()
 
     # Return template and data
-    return render_template("index.html", mars=mars_data)
+
+    if mars_data != None:
+        return render_template("index.html", mars=mars_data)
+    else:
+        return render_template("index.html", mars={"Mars_Facts": {"value": {"no_content":"Press the Button"}}})
 
 
 # Route that will trigger the scrape function
