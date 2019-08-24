@@ -36,11 +36,10 @@ def scrape_info():
   url_twiter="https://twitter.com/marswxreport?lang=en"
   response=requests.get(url_twiter)
   soup= BeautifulSoup(response.text, 'lxml')
-  mars_weather =mars_weather.replace('hPapic.twitter.com/MhPPOHJg3m', '')
   mars_weather  = soup.find('p',class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
+  mars_weather = mars_weather.replace('hPapic.twitter.com/MhPPOHJg3m', '')
   
   #Get the Mars Facts
-#Get the Mars Facts
   url_marsFact="https://space-facts.com/mars/"
   mars_fact = pd.read_html(url_marsFact)
   mars_fact[1]
